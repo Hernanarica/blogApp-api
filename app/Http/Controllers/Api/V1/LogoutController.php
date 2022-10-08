@@ -11,10 +11,9 @@ class LogoutController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param Request $request
 	 * @return JsonResponse
 	 */
-	public function store(Request $request)
+	public function store()
 	{
 		auth()->user()->tokens()->delete();
 		
@@ -22,5 +21,4 @@ class LogoutController extends Controller
 			'status' => 'success',
 		]);
 	}
-	
 }

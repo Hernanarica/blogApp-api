@@ -18,15 +18,6 @@ class UserStoreRequest extends FormRequest
 		return true;
 	}
 	
-	
-	public function failureValidation(Validator $validator)
-	{
-		throw new HttpResponseException(response()->json([
-			'status' => 'error',
-			'errors' => $validator->errors(),
-		]));
-	}
-	
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
