@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
-use App\Http\Resources\V1\UserResource;
+use App\Http\Resources\v1\UserShowResource;
+use App\Http\Resources\v1\UserStoreResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -31,29 +32,23 @@ class UserController extends Controller
 	 */
 	public function store(UserStoreRequest $request)
 	{
-		
 		$user = User::create([
 			'email'    => $request->email,
 			'name'     => $request->name,
 			'password' => Hash::make($request->password),
 		]);
 		
-		return response()->json([
-			'status' => 'success',
-			'data'   => $user
-		]);
+		return (new UserStoreResource($user))->response()->setStatusCode(200);
 	}
 	
 	/**
 	 * Display the specified resource.
 	 *
-	 * @return UserResource
+	 * @return JsonResponse
 	 */
 	public function show()
 	{
-		return (new UserResource(auth()->user()))->additional([
-			'status' => 'success'
-		]);
+		return (new UserShowResource(auth()->user()))->response()->setStatusCode(200);
 	}
 	
 	/**
