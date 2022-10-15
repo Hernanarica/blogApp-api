@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Resources\V1\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -46,14 +47,12 @@ class UserController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param int $id
-	 * @return JsonResponse
+	 * @return UserResource
 	 */
-	public function show($id)
+	public function show()
 	{
-		return response()->json([
-			'status' => 'success',
-			'data'   => auth()->user()
+		return (new UserResource(auth()->user()))->additional([
+			'status' => 'success'
 		]);
 	}
 	

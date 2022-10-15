@@ -27,8 +27,8 @@ Route::controller(LoginController::class)->prefix('login')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
 	
-	Route::controller(UserController::class)->prefix('users')->group(function () {
-		Route::get('/{id}', 'show');
+	Route::controller(UserController::class)->prefix('user')->group(function () {
+		Route::get('', 'show');
 	});
 	
 	Route::post('logout', [LogoutController::class, 'store']);
