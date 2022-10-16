@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\v1;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -27,6 +26,7 @@ class LoginResource extends JsonResource
 	{
 		return [
 			'status' => 'success',
+			'token'  => $this->createToken('token')->plainTextToken,
 		];
 	}
 }
