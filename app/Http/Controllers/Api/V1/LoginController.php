@@ -21,11 +21,8 @@ class LoginController extends Controller
 	public function store(LoginRequest $request)
 	{
 		if (Auth::attempt($request->only('email', 'password'))) {
-			$token = auth()->user()->createToken('access_token')->plainTextToken;
 			
-			return (new LoginResource(auth()->user()))->additional([
-				'access_token' => $token
-			])->response()->setStatusCode(200);
+			return (new LoginResource(auth()->user()))->response()->setStatusCode(200);
 		}
 		
 		return response()->json([
