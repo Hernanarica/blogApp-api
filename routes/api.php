@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\CommentController;
 use App\Http\Controllers\Api\V1\LoginController;
 use App\Http\Controllers\Api\V1\LogoutController;
 use App\Http\Controllers\Api\V1\UserController;
@@ -32,5 +33,9 @@ Route::middleware('auth:sanctum')->group(function () {
 	});
 	
 	Route::post('logout', [LogoutController::class, 'store']);
+	
+	Route::controller(CommentController::class)->prefix('comments')->group(function () {
+		Route::post('', 'store');
+	});
 	
 });

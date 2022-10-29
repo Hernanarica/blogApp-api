@@ -17,10 +17,11 @@ class PostFactory extends Factory
 	public function definition()
 	{
 		return [
-			'user_id' => fake()->randomDigitNotNull(),
-			'title'   => fake()->title,
-			'content' => fake()->text(100),
-			'date'    => fake()->date('Y-m-d'),
+			'user_id'   => fake()->randomDigitNotNull(),
+			'title'     => fake()->title,
+			'body'      => fake()->text(100),
+			'visible'   => fake()->boolean(),
+			'published' => fake()->date('Y-m-d'),
 		];
 	}
 }

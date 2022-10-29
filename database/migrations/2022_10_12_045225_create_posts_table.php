@@ -16,9 +16,9 @@ return new class extends Migration {
 			$table->id();
 			$table->foreignId('user_id')->references('id')->on('users');
 			$table->string('title');
-			$table->string('content');
+			$table->string('body');
 			$table->boolean('visible');
-			$table->date('created_at');
+			$table->date('published');
 			$table->timestamps();
 		});
 	}
