@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Api\V1\CommentController;
+use App\Http\Controllers\Api\V1\ImageTextEditorController;
 use App\Http\Controllers\Api\V1\LoginController;
 use App\Http\Controllers\Api\V1\LogoutController;
+use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +41,9 @@ Route::middleware('auth:sanctum')->group(function () {
 	});
 	
 });
+
+Route::controller(PostController::class)->prefix('posts')->group(function () {
+	Route::post('', 'store');
+});
+
+Route::post('images', [ImageTextEditorController::class, 'store'])->middleware('cors');
