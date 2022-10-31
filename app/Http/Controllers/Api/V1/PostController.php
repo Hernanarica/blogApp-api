@@ -40,7 +40,6 @@ class PostController extends Controller
 	{
 		$post = Post::create([
 			'user_id'   => $request->user_id,
-			'title'     => $request->title,
 			'body'      => $request->body,
 			'visible'   => $request->visible,
 			'published' => $request->published,

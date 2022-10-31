@@ -18,7 +18,6 @@ class PostFactory extends Factory
 	{
 		return [
 			'user_id'   => fake()->randomDigitNotNull(),
-			'title'     => fake()->title,
 			'body'      => fake()->text(100),
 			'visible'   => fake()->boolean(),
 			'published' => fake()->date('Y-m-d'),
