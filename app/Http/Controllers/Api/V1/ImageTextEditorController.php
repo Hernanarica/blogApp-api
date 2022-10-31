@@ -14,18 +14,16 @@ class ImageTextEditorController extends Controller
 	public function store(Request $request)
 	{
 		try {
-			$img       = Image::make($request->file('upload'));
-			$imageName = Str::uuid() . '.' . $request->file('upload')->getClientOriginalExtension();
-			
-			$img->save(public_path('uploads/' . $imageName));
+			$image = new ImageService($request->file('upload'), public_path('uploads'));
+			$image->saveImage();
 			
 			return response()->json([
-				'url' => 'http://127.0.0.1:8000/uploads/' . $imageName
+				'url' => 'http://127.0.0.1:8000/uploads/' . $image->imageName
 			]);
 			
 		} catch (Exception $e) {
 			return response()->json([
-				'error' => 'asdf1234'
+				'error' => 'Ocurrió un error al subir la imagen'
 			]);
 		}
 	}

@@ -15,7 +15,7 @@ class ImageService
 	public function __construct(object $newImage, string $directory)
 	{
 		$this->newImage  = $newImage;
-		$this->directory = mkdir($directory);
+		$this->directory = createDirectoryIfNotExist($directory);
 		$this->imageName = Str::uuid() . '.' . $newImage->getClientOriginalExtension();
 		
 		$this->openImage();
