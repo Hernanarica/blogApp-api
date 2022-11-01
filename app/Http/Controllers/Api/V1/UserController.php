@@ -7,6 +7,7 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Resources\v1\UserShowResource;
 use App\Http\Resources\v1\UserStoreResource;
 use App\Models\User;
+use App\Services\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -32,9 +33,16 @@ class UserController extends Controller
 	 */
 	public function store(UserStoreRequest $request)
 	{
+		if ($request->hasFile('image')) {
+			$image = new ImageService($request->file('image'), public_path('uploads'));
+			$image->resizeImage(100, 100);
+			$image->saveImage();
+		}
+		
 		$user = User::create([
 			'email'    => $request->email,
 			'name'     => $request->name,
+			'image'    => $image->imageName ?? null,
 			'password' => Hash::make($request->password),
 		]);
 		

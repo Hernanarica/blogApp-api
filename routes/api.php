@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\V1\LoginController;
 use App\Http\Controllers\Api\V1\LogoutController;
 use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(UserController::class)->prefix('users')->group(function () {
-	Route::post('', 'store');
-});
+//Route::controller(UserController::class)->prefix('users')->group(function () {
+//	Route::post('', 'store')->middleware('cors');
+//});
+
+Route::post('users', [UserController::class, 'store'])->middleware('cors');
 
 Route::controller(LoginController::class)->prefix('login')->group(function () {
 	Route::post('', 'store');
