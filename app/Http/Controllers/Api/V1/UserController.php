@@ -31,8 +31,13 @@ class UserController extends Controller
 	 * @param UserStoreRequest $request
 	 * @return JsonResponse
 	 */
-	public function store(UserStoreRequest $request)
+//	public function store(UserStoreRequest $request)
+	public function store(Request $request)
 	{
+		return response()->json([
+			'file' => $request->allFiles()
+		]);
+		
 		if ($request->hasFile('image')) {
 			$image = new ImageService($request->file('image'), public_path('uploads'));
 			$image->resizeImage(100, 100);
