@@ -41,8 +41,8 @@ class PostController extends Controller
 		$post = Post::create([
 			'user_id'   => $request->user_id,
 			'body'      => $request->body,
-			'visible'   => $request->visible,
-			'published' => $request->published,
+			'visible'   => 0,
+			'published' => date('Y-m-d'),
 		]);
 		
 		return response()->json([

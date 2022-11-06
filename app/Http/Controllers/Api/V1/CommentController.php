@@ -41,7 +41,7 @@ class CommentController extends Controller
 			'user_id'   => $request->user_id,
 			'post_id'   => $request->post_id,
 			'body'      => $request->body,
-			'published' => $request->published,
+			'published' => date('Y-m-d'),
 		]);
 		
 		return response()->json([
