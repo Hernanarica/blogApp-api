@@ -34,7 +34,7 @@ class UserController extends Controller
 	public function store(UserStoreRequest $request)
 	{
 		if ($request->hasFile('image')) {
-			$image = new ImageService($request->file('image'), public_path('uploads'));
+			$image = new ImageService($request->file('image'), public_path('uploads/profile'));
 			$image->resizeImage(100, 100);
 			$image->saveImage();
 		}
@@ -42,7 +42,7 @@ class UserController extends Controller
 		$user = User::create([
 			'email'    => $request->email,
 			'name'     => $request->name,
-			'image'    => $image->imageName ?? null,
+			'image'    => $image->imageName ?? 'avatar-default.png',
 			'password' => Hash::make($request->password),
 		]);
 		
