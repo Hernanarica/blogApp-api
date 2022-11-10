@@ -18,6 +18,14 @@ class UserStoreRequest extends FormRequest
 		return true;
 	}
 	
+	protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+	{
+		throw new HttpResponseException(response()->json([
+			'status'  => 'error',
+			'message' => $validator->errors()->first()
+		], 400));
+	}
+	
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
