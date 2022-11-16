@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostStoreRequest;
 use App\Http\Resources\V1\PostCollection;
 use App\Models\Comment;
 use App\Models\Post;
@@ -34,16 +35,18 @@ class PostController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param Request $request
+	 * @param PostStoreRequest $request
 	 * @return JsonResponse
 	 */
-	public function store(Request $request)
+	public function store(PostStoreRequest $request)
 	{
 		$post = Post::create([
-			'user_id'   => $request->user_id,
-			'body'      => $request->body,
-			'visible'   => 0,
-			'published' => date('Y-m-d'),
+			'user_id'     => $request->user_id,
+			'title'       => $request->title,
+			'description' => $request->description,
+			'body'        => $request->body,
+			'visible'     => 0,
+			'published'   => date('Y-m-d'),
 		]);
 		
 		return response()->json([
