@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\PostCollection;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
@@ -13,11 +14,11 @@ class PostController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return JsonResponse
 	 */
 	public function index()
 	{
-		//
+		return (new PostCollection(Post::all()))->response()->setStatusCode(200);
 	}
 	
 	/**

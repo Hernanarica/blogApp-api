@@ -44,6 +44,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::controller(PostController::class)->prefix('posts')->group(function () {
+	Route::get('', 'index');
 	Route::post('', 'store');
 });
 
