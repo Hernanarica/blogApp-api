@@ -18,8 +18,8 @@ return new class extends Migration {
 			$table->string('title', 30);
 			$table->string('description', 150);
 			$table->text('body');
-			$table->boolean('visible');
-			$table->date('published');
+			$table->boolean('visible')->default(0);
+			$table->date('published')->default(date('Y-m-d'));
 			$table->timestamps();
 		});
 	}

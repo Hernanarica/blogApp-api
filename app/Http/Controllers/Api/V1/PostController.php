@@ -44,9 +44,7 @@ class PostController extends Controller
 			'user_id'     => $request->user_id,
 			'title'       => $request->title,
 			'description' => $request->description,
-			'body'        => $request->body,
-			'visible'     => 0,
-			'published'   => date('Y-m-d'),
+			'body'        => $request->body
 		]);
 		
 		return response()->json([
