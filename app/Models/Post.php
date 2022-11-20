@@ -11,8 +11,8 @@ class Post extends Model
 	
 	protected $fillable = ['user_id', 'title', 'description', 'body', 'visible', 'published'];
 	
-	public function comments()
+	public function user()
 	{
-		return $this->hasMany(Comment::class);
+		return $this->hasOne(User::class, 'id', 'user_id');
 	}
 }

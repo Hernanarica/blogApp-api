@@ -19,7 +19,7 @@ class PostController extends Controller
 	 */
 	public function index()
 	{
-		return (new PostCollection(Post::all()))->response()->setStatusCode(200);
+		return (new PostCollection(Post::with('user')->get()))->response()->setStatusCode(200);
 	}
 	
 	/**
