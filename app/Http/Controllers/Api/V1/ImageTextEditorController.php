@@ -14,7 +14,7 @@ class ImageTextEditorController extends Controller
 	public function store(Request $request)
 	{
 		try {
-			$image = new ImageService($request->file('upload'), public_path('uploads'));
+			$image = new ImageService($request->file('upload'), public_path('uploads/posts'));
 			$image->saveImage();
 			
 			return response()->json([

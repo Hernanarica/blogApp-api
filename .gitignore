@@ -15,4 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 storage/framework/views
-public/uploads
+#public/uploads/userProfile
+#public/uploads/posts
