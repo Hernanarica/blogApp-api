@@ -28,9 +28,9 @@ class UserSeeder extends Seeder
 		])->assignRole('collaborator');
 		
 		User::create([
-			'name'     => 'Suscriptor user',
-			'email'    => 'suscriptor@gmail.com',
+			'name'     => 'Subscriber user',
+			'email'    => 'subscriber@gmail.com',
 			'password' => Hash::make('asdf1234')
-		])->assignRole('suscriptor');
+		])->assignRole('subscriber');
 	}
 }

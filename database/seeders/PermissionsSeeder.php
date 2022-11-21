@@ -21,7 +21,7 @@ class PermissionsSeeder extends Seeder
 //		Creamos roles
 		$adminRole        = Role::create(['name' => 'admin']);
 		$collaboratorRole = Role::create(['name' => 'collaborator']);
-		$suscriptorRole   = Role::create(['name' => 'suscriptor']);
+		$subscriberRole   = Role::create(['name' => 'subscriber']);
 
 //		Creamos permisos
 		Permission::create(['name' => 'dashboard access']);
