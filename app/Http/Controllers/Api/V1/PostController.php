@@ -19,7 +19,7 @@ class PostController extends Controller
 	 */
 	public function index()
 	{
-		return (new PostCollection(Post::all()))->response()->setStatusCode(200);
+		return (new PostCollection(Post::with('user')->paginate(12)))->response()->setStatusCode(200);
 	}
 	
 	/**
@@ -44,9 +44,7 @@ class PostController extends Controller
 			'user_id'     => $request->user_id,
 			'title'       => $request->title,
 			'description' => $request->description,
-			'body'        => $request->body,
-			'visible'     => 0,
-			'published'   => date('Y-m-d'),
+			'body'        => $request->body
 		]);
 		
 		return response()->json([

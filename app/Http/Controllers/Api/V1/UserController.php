@@ -34,7 +34,7 @@ class UserController extends Controller
 	public function store(UserStoreRequest $request)
 	{
 		if ($request->hasFile('image')) {
-			$image = new ImageService($request->file('image'), public_path('uploads/profile'));
+			$image = new ImageService($request->file('image'), public_path('uploads/userProfile'));
 			$image->resizeImage(100, 100);
 			$image->saveImage();
 		}
