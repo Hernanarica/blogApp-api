@@ -22,9 +22,15 @@ class UserSeeder extends Seeder
 		])->assignRole('admin');
 		
 		User::create([
-			'name'     => 'Normal user',
-			'email'    => 'normal@gmail.com',
+			'name'     => 'Collaborator user',
+			'email'    => 'collaborator@gmail.com',
 			'password' => Hash::make('asdf1234')
-		])->assignRole('normal');
+		])->assignRole('collaborator');
+		
+		User::create([
+			'name'     => 'Suscriptor user',
+			'email'    => 'suscriptor@gmail.com',
+			'password' => Hash::make('asdf1234')
+		])->assignRole('suscriptor');
 	}
 }

@@ -19,8 +19,9 @@ class PermissionsSeeder extends Seeder
 		app()[ PermissionRegistrar::class ]->forgetCachedPermissions();
 
 //		Creamos roles
-		$adminRole  = Role::create(['name' => 'admin']);
-		$normalRole = Role::create(['name' => 'normal']);
+		$adminRole        = Role::create(['name' => 'admin']);
+		$collaboratorRole = Role::create(['name' => 'collaborator']);
+		$suscriptorRole   = Role::create(['name' => 'suscriptor']);
 
 //		Creamos permisos
 		Permission::create(['name' => 'dashboard access']);
@@ -32,6 +33,7 @@ class PermissionsSeeder extends Seeder
 		Permission::create(['name' => 'delete user']);
 
 //		Asignamos permisos a roles
+//		Admin
 		$adminRole->givePermissionTo('dashboard access');
 		$adminRole->givePermissionTo('create post');
 		$adminRole->givePermissionTo('edit post');
@@ -39,5 +41,9 @@ class PermissionsSeeder extends Seeder
 		$adminRole->givePermissionTo('create user');
 		$adminRole->givePermissionTo('edit user');
 		$adminRole->givePermissionTo('delete user');
+//		Collaborator
+		$collaboratorRole->givePermissionTo('create post');
+		$collaboratorRole->givePermissionTo('edit post');
+		$collaboratorRole->givePermissionTo('delete post');
 	}
 }
