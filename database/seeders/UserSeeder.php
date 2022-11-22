@@ -18,18 +18,21 @@ class UserSeeder extends Seeder
 		User::create([
 			'name'     => 'Admin user',
 			'email'    => 'admin@gmail.com',
+			'image'    => 'avatar-default.png',
 			'password' => Hash::make('asdf1234')
 		])->assignRole('admin');
 		
 		User::create([
 			'name'     => 'Collaborator user',
 			'email'    => 'collaborator@gmail.com',
+			'image'    => 'avatar-default.png',
 			'password' => Hash::make('asdf1234')
 		])->assignRole('collaborator');
 		
 		User::create([
 			'name'     => 'Subscriber user',
 			'email'    => 'subscriber@gmail.com',
+			'image'    => 'avatar-default.png',
 			'password' => Hash::make('asdf1234')
 		])->assignRole('subscriber');
 	}
