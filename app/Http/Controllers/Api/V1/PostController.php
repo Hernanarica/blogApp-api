@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Resources\V1\PostCollection;
+use App\Http\Resources\V1\PostShowResource;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
@@ -56,12 +57,12 @@ class PostController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param int $id
-	 * @return \Illuminate\Http\Response
+	 * @param Post $post
+	 * @return PostShowResource
 	 */
-	public function show($id)
+	public function show(Post $post)
 	{
-		//
+		return (new PostShowResource($post));
 	}
 	
 	/**

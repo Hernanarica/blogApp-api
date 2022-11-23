@@ -18,7 +18,7 @@ class ImageTextEditorController extends Controller
 			$image->saveImage();
 			
 			return response()->json([
-				'url' => 'http://127.0.0.1:8000/uploads/' . $image->imageName
+				'url' => 'http://127.0.0.1:8000/uploads/posts/' . $image->imageName
 			]);
 			
 		} catch (Exception $e) {
