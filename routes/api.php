@@ -30,22 +30,24 @@ Route::controller(LoginController::class)->prefix('login')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-	
+
 	Route::controller(UserController::class)->prefix('user')->group(function () {
 		Route::get('', 'show');
 	});
-	
+
 	Route::post('logout', [LogoutController::class, 'store']);
-	
+
 	Route::controller(CommentController::class)->prefix('comments')->group(function () {
 		Route::post('', 'store');
 	});
-	
+
+	Route::controller(PostController::class)->prefix('posts')->group(function () {
+		Route::post('', 'store');
+	});
 });
 
 Route::controller(PostController::class)->prefix('posts')->group(function () {
 	Route::get('', 'index');
-	Route::post('', 'store');
 	Route::get('/{post:title}', 'show');
 });
 
