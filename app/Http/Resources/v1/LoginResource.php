@@ -7,6 +7,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class LoginResource extends JsonResource
 {
+    public static $wrap = 'user';
+
 	/**
 	 * Transform the resource into an array.
 	 *
@@ -23,7 +25,7 @@ class LoginResource extends JsonResource
 			'image' => $this->image,
 		];
 	}
-	
+
 	public function with($request): array
 	{
 		return [
