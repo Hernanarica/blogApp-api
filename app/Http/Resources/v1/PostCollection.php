@@ -6,6 +6,8 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PostCollection extends ResourceCollection
 {
+    public static $wrap = 'posts';
+
 	/**
 	 * Transform the resource collection into an array.
 	 *
@@ -14,9 +16,9 @@ class PostCollection extends ResourceCollection
 	 */
 	public function toArray($request)
 	{
-		return ['data' => $this->collection];
+		return $this->collection;
 	}
-	
+
 	public function with($request): array
 	{
 		return [
