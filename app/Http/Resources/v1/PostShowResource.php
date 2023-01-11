@@ -7,6 +7,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PostShowResource extends JsonResource
 {
+    public static $wrap = 'post';
+
 	/**
 	 * Transform the resource into an array.
 	 *
@@ -22,7 +24,7 @@ class PostShowResource extends JsonResource
 			'published'   => $this->published,
 		];
 	}
-	
+
 	public function with($request): array
 	{
 		return [
